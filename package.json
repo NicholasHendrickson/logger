@@ -1,0 +1,48 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "webpack serve --env mode=development",
+    "build": "webpack --env mode=production",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClinicalToolkits/logger.git"
+  },
+  "keywords": [],
+  "author": "Clinical Toolkits",
+  "license": "ISC",
+  "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.47",
+    "postcss-loader": "^8.1.1",
+    "process": "^0.11.10",
+    "raw-loader": "^4.0.2",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ClinicalToolkits/logger/issues"
+  },
+  "homepage": "https://github.com/ClinicalToolkits/logger#readme"
+}
