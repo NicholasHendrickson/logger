@@ -1,24 +1,42 @@
 {
-  "name": "logger",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "start": "webpack serve --env mode=development",
-    "build": "webpack --env mode=production",
-    "test": "echo \"No tests specified\" && exit 0"
+  "name": "@clinicaltoolkits/logger",
+  "version": "1.0.10",
+  "description": "Framework-agnostic scoped logger with sinks and optional React adapter",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "default": "./dist/esm/index.js"
+    },
+    "./react": {
+      "types": "./dist/esm/adapters/react.d.ts",
+      "import": "./dist/esm/adapters/react.js",
+      "require": "./dist/cjs/adapters/react.cjs",
+      "default": "./dist/esm/adapters/react.js"
+    }
   },
-  "type": "commonjs",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ClinicalToolkits/logger.git"
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "react": ">=17"
   },
-  "keywords": [],
-  "author": "Clinical Toolkits",
-  "license": "ISC",
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/react": "^18.2.46",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "css-loader": "^7.1.2",
@@ -31,6 +49,8 @@
     "postcss-loader": "^8.1.1",
     "process": "^0.11.10",
     "raw-loader": "^4.0.2",
+    "react": "^18.2.0",
+    "rimraf": "^6.1.2",
     "stream-browserify": "^3.0.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.1",
@@ -41,6 +61,20 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
+  "scripts": {
+    "start": "webpack serve --env mode=development",
+    "build": "npm run clean && tsc -p tsconfig.build.esm.json && tsc -p tsconfig.build.cjs.json && node scripts/rename-cjs.cjs",
+    "clean": "rimraf dist",
+    "test": "echo \"No tests specified\" && exit 0",
+    "prepublishOnly": "npm run build && npm version patch --no-git-tag-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClinicalToolkits/logger.git"
+  },
+  "author": "Clinical Toolkits",
+  "license": "ISC",
+  "keywords": [],
   "bugs": {
     "url": "https://github.com/ClinicalToolkits/logger/issues"
   },

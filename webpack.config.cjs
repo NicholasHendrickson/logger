@@ -30,7 +30,7 @@ module.exports = (webpackEnv, options) => {
 
   return {
     mode: mode,
-    entry: bProduction ? './src/index.tsx' : './src/index.tsx', // This allows for specifying a different entry point for development
+    entry: bProduction ? './src/index.ts' : './src/index.ts', // This allows for specifying a different entry point for development
     output: {
       filename: 'index[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
